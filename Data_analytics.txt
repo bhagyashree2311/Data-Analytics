@@ -1,0 +1,153 @@
+# column have index and name
+# row have index and label
+# df.iloc[row_start:row_end , col_start: col end]
+# row_end and col_end are exclusive
+#loc uses label and name of coulns and rows
+#iloc is index based uses indexes pf col and row
+
+
+#range out of scope : no error
+df.iloc[100:103,100:1000] # df.iloc[:1000,:]
+iloc selects INDEX
+#individual val of out of scope : error
+df.iloc[150:156,[50.51]]
+loc: select LABELS rows by condition and column by name
+e.g show a
+
+mean: average=sum_of_terms/no._of_terms
+mode: value that appears most often in a set of data values.
+median: middle value of sorted elements
+
+mode
+[1,2,3,4]=>all values are mode
+[1,1,1,2]=>1
+[1,2,2,1]=>1,2
+
+only unimodal,bi-modal value is useful.
+
+'NaN', "NaN" --> these are string and not same as NaN
+datatype of Nan is float
+
+unique cant be applied to dataframe, only col
+drop_duplicates can be applied to dataframe
+
+index_col is not clear to us
+
+important: how good you are with selecting data, data clicing, data analysis, data cleaning/outlier finding/
+
+both below are equal
+df_emp[df_emp['DailyRate']>1000]
+df_emp.loc[df_emp['DailyRate']>1000]
+
+missing value: filling the value
+techniques:
+1. rolling average(moving average)
+2. interpolation: not used much
+3. back fill
+4. front fill
+# interpolation doesnt work with time series data. as TS data is very dynamic. e.g. stock market prediction
+# you are hurting TS data if you are using iterpolation.
+# TS ex. : stock, oil, gold prices
+# in TS: ffill>rolling average>
+# front fill makes more sense than back fill
+
+
+Data Analytics
+
+
+Histogram
+x-axis:value
+y-axis:frequency
+learn: binning,
+
+conitnuous variable have any value between a range
+e.g. age between 0-100, salary- 0-1billion, marks
+
+categorical variable means it has discrete values/fixed value/distinct value/sepearate value.
+e.g. gender, grades, zipcode, branch,
+
+Histogram makes more sense in conitnuous variables/column
+
+balanced Histogram: near same frquency of 2 values(60%-40%)
+imbalanced Histogram: more change infrequency (10%-90%)
+continuous variable dosnt have sense of balanced/imbalanced
+
+you can check balanced/imbalanced in categorical variables
+
+sir uses visualization from pandas than any other module
+
+
+boxplot is special and used in many applications.
+boxplot on continuous variables only ONLY.
+plotting boxplot on categorical variables willnt make sense, outliers wont be there. Q1,Q2,Q3 wont make sense
+types of boxplot is available
+boxplot used to check if data contains outliers or not
+also to check variance in the data
+
+Manual analysis is not recommended
+Use algorithms:
+scatter plot is an old way to find correlation between 2 continuous variables ONLY.
+It doenst make any sense with categorical data, as we cant get any info
+we can have 3d,4d,5d,6d scatter plot.
+
+KDE for conitnuous variables
+
+pie chart
+used for categorical variables
+dont use pie chart for conituous variables
+
+
+
+Numpy
+np.arange(10,30,0.7)
+when you are using float step value, rounding effect takes place,
+as numbers are changed to binary to float and back from float to binary
+so end value can be included
+
+
+arr1+arr2
+numpy array size should be equal to perform +,-,*,/,
+
+Datatypes supported by numpy
+https://numpy.org/devdocs/user/basics.types.html
+
+
+how random function works
+random function takes input clock and seed(this we givr as ip)
+
+
+np.random.seed(7)
+same random value will be genereated for every time, values will be distinct values
+
+in ml seed is equal to random-set
+keep same seed/random-set in our program
+keep habit of using seed
+
+
+arr.reshape(2,4)=> original array is intact, only copies are returned by operations
+
+image is 3d: lxbxrgb
+video is 4d: lxbxrgbxtime
+
+
+pandas only deals with 1d,2d
+numpy deals with 2d,3d,..nd
+
+# asked in infosys interview
+# WAP to create 3 by 3 matrix
+# select all elements which are divisible by 5
+# Print the sum of square roots of all the elements which are selected
+arr1 = np.array([[11,23,45],[55,77,88],[87,101,121]])
+mask = (arr1%5 == 0)
+print(mask)
+c = arr1[mask]**0.5 #(** (1/2))
+c = arr1[(arr1%5 == 0)]**0.5
+print(sum(c))
+
+
+linear optimization
+
+sparse data
+
+for longitude and lattitude
+https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.haversine_distances.html
